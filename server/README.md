@@ -20,14 +20,11 @@
 ## Folder
 
 ```js
-|- apollo
-    |- index.ts
 |- config  // configurations
 |- middlewares  // middlewares
     |- cors
     |- graphql
     |- index.ts
-|- types  // common types and interface
 |- utils  // custom helper functions
 |- index.ts  // main
 |- package.json
