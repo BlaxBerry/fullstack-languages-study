@@ -19,6 +19,8 @@
 - [Gatsby]() v4.18
 - [Typescript]() v4.7
 - [Ant Design]() V4.21
+- [Apollo Client]() v3.6+
+- graphql
 - ahooks
 - eslint
 - prettier
