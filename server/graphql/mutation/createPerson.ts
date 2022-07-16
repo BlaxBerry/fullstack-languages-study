@@ -28,3 +28,13 @@ export default {
     return createPerson(args.input)
   },
 }
+
+/*
+mutation {
+  createPerson(input: {name: "奥特曼", age: 29}) {
+    id
+    name
+    age
+  }
+}
+*/
