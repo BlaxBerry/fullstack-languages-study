@@ -1,4 +1,6 @@
-.cache/
+docs/
+dist/
 node_modules/
 public/
-gatsby-*.js
+.eslintrc.json
+vite.config.ts

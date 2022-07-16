@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-config-sass-guidelines"
+  ],
+  "plugins": ["stylelint-prettier"],
+  "rules": {
+    "rule-empty-line-before": [
+      "always",
+      {
+        "ignore": ["after-comment"]
+      }
+    ]
+  }
+}

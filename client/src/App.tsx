@@ -1,9 +1,8 @@
-import * as React from "react"
-import { Seo } from "../components/common"
-import { useQuery, useMutation } from "@apollo/client"
-import { GET_PERSONLIST, CREATE_PERSON } from "../graphql"
+import { useMutation, useQuery } from '@apollo/client'
+import React from 'react'
+import { CREATE_PERSON, GET_PERSONLIST } from './graphql'
 
-const IndexPage = () => {
+export default function App() {
   const { loading, error, data } = useQuery(GET_PERSONLIST)
   console.log(loading, error, data)
 
@@ -12,15 +11,17 @@ const IndexPage = () => {
   console.log(createData, createLoading)
 
   return (
-    <>
-      <Seo title="Home" />
-      about text apollo graphql
+    <div>
+      App
       <div>
         <button
           onClick={() => {
             createPerson({
               variables: {
-                input: { name: "xxx", age: 222 },
+                input: {
+                  name: 'xxxx',
+                  age: 222,
+                },
               },
             })
           }}
@@ -28,8 +29,6 @@ const IndexPage = () => {
           +1
         </button>
       </div>
-    </>
+    </div>
   )
 }
-
-export default IndexPage
