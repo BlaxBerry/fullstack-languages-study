@@ -13,6 +13,8 @@
 - [Node.js]() v14.18
 - [Express.js]() v14.18
 - [Typescript]() v4.7
+- [graphql]() v16.5
+- [express-graphql]() v0.12
 - cors
 - eslint
 - prettier
@@ -20,13 +22,17 @@
 ## Folder
 
 ```js
-|- config  // configurations
-|- middlewares  // middlewares
-    |- cors
-    |- graphql
-    |- index.ts
-|- utils  // custom helper functions
+|- config  // project configurations
+|- data
+|- graphql
+    |- mutaion // mutations' field type
+    |- query // queries' field type
+    |- resolver  // resolver functions
+    |- schema
+|- middlewares
+|- utils
 |- index.ts  // main
 |- package.json
 |- tsconfig.json
+|- ...
 ```

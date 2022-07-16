@@ -1,7 +1,7 @@
 import { GraphQLList, GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLInt } from 'graphql'
 import { getPersonList } from '../resolver'
 
-const PersonType = new GraphQLObjectType({
+export const PersonType = new GraphQLObjectType({
   name: 'PersonType',
   description: 'person',
   fields: {
@@ -20,7 +20,7 @@ const PersonType = new GraphQLObjectType({
   },
 })
 
-const PersonListType = new GraphQLList(PersonType)
+export const PersonListType = new GraphQLList(PersonType)
 
 export default {
   type: PersonListType,
