@@ -4,6 +4,7 @@
 - [Tech Stack](#teach-stack)
 - [Folder](#folder)
 - [Routes](#routes)
+- [Design](#design)
 
 ## Description
 
@@ -71,3 +72,5 @@
 - `/words`
 - `/words/:ID`
 - `/404`
+
+## Design

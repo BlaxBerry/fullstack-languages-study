@@ -1,10 +1,13 @@
 import React from 'react'
 import RouteView from './routes/RouteView'
+import Layout from './components/layout'
 
 export default function App() {
   return (
     <React.Fragment>
-      <RouteView />
+      <Layout>
+        <RouteView />
+      </Layout>
     </React.Fragment>
   )
 }

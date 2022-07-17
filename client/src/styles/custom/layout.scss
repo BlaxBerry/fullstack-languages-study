@@ -1,0 +1,54 @@
+@import '../common/variables';
+
+$header-height: 64px;
+
+.my-layout {
+
+  // Left Sider
+  .my-sider {
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    overflow: auto;
+    position: sticky;
+    top: 0;
+
+    // Left Sider Top Header
+    .my-sider-header {
+      height: $header-height / 2;
+      margin: $header-height / 4;
+    }
+  }
+
+  // Right Contnet
+  .my-content {
+    $content-padding: 24px;
+
+    // Right Contnet Top Header
+    &-header {
+      padding: 0;
+      position: fixed;
+      width: 100%;
+      z-index: 2;
+    }
+
+    // Right Contnet Bottom Content Wrap
+    &-warp {
+      margin-top: $header-height;
+      overflow: initial;
+
+      // Right Contnet True Content
+      .my-content-true-content {
+        min-height: calc(100vh - $header-height);
+        padding: $content-padding;
+      }
+    }
+  }
+
+  // Header
+
+  // Footer
+  .my-footer {
+    text-align: center;
+  }
+}

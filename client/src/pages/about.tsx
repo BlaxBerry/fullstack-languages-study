@@ -1,6 +1,7 @@
 import React from 'react'
-import { Button } from 'antd'
+import { Button, Switch } from 'antd'
 import { useMutation, useQuery } from '@apollo/client'
+import { useThemeSwitcher } from 'react-css-theme-switcher'
 import { CREATE_PERSON, GET_PERSONLIST } from '../graphql'
 
 export default function About() {
@@ -11,9 +12,19 @@ export default function About() {
     useMutation(CREATE_PERSON)
   console.log(createData, createLoading)
 
+  const [isDarkMode, setIsDarkMode] = React.useState<boolean>(false)
+  const { switcher, currentTheme, themes } = useThemeSwitcher()
+
+  const toggleTheme = (isChecked: boolean) => {
+    setIsDarkMode(isChecked)
+    switcher({ theme: isChecked ? themes.dark : themes.light })
+  }
+
   return (
     <div>
-      about
+      <h1>The current theme is: {currentTheme}</h1>
+      <Switch checked={isDarkMode} onChange={toggleTheme} />
+      <hr />
       <div>
         <Button
           type="primary"
@@ -28,7 +39,7 @@ export default function About() {
             })
           }}
         >
-          +1
+          mutation create person
         </Button>
       </div>
     </div>
