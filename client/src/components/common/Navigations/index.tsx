@@ -53,21 +53,27 @@ export default function Naviagtions({ className }: NaviagtionsProps) {
   const [currentItem, setCurrentItem] = useState<string>(
     location.pathname === '/' ? '/home' : location.pathname
   )
+  const [openedSubItem, setOpenedSubItem] = useState<string>(
+    `/${location.pathname.slice(1).split('/')[0]}`
+  )
   const onClick: MenuProps['onClick'] = (e): void => {
     setCurrentItem(e.key)
     navigate(e.key)
   }
   useEffect(() => {
+    // set selected item
     setCurrentItem(location.pathname)
+    // set opend subitem
+    setOpenedSubItem(`/${location.pathname.slice(1).split('/')[0]}`)
   }, [location.pathname])
 
   return (
     <AntdMenu
       className={className}
-      theme={'dark'}
-      mode="vertical"
+      theme="dark"
+      mode="inline"
       defaultSelectedKeys={[currentItem]}
-      defaultOpenKeys={[currentItem]}
+      defaultOpenKeys={[openedSubItem]}
       items={MENU_ITEMS}
       forceSubMenuRender
       onClick={onClick}

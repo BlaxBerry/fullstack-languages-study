@@ -1,1 +1,4 @@
-export { default as SettingDrawer } from './SettingDrawer'
+export {
+  default as SettingDrawer,
+  SettingDrawerTriggerButton,
+} from './SettingDrawer'

@@ -1,31 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Layout as AntdLayout } from 'antd'
 import Navigations from '../Navigations'
 
 interface SiderProps {
-  trigger: React.ReactNode
-  collapsible: boolean
-  collapsed: boolean
   className?: string
   style?: React.CSSProperties
 }
-export default function Sider({
-  trigger,
-  collapsible,
-  collapsed,
-  className,
-  style,
-}: SiderProps) {
+
+export default function Sider({ className, style }: SiderProps) {
+  const [siderCollapsed, setSiderCollapsed] = useState<boolean>(false)
+
   return (
     // my-sider
     <AntdLayout.Sider
       className={className}
       style={style}
-      trigger={trigger}
-      collapsible={collapsible}
-      collapsed={collapsed}
+      onCollapse={(value) => setSiderCollapsed(value)}
+      collapsible
+      collapsed={siderCollapsed}
     >
-      <div className="my-sider-header">LOGO</div>
+      {/* navigations menu */}
       <Navigations className="my-sider-navigation-menu" />
     </AntdLayout.Sider>
   )

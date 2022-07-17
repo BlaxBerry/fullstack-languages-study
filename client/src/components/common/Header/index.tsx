@@ -1,55 +1,25 @@
-import React, { useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Avatar, Button, Layout as AntdLayout } from 'antd'
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
-import DEFAULT_AVATAR from '../../../assets/avatar.jpeg'
+import React from 'react'
+import { Layout as AntdLayout } from 'antd'
+import LOGO from '../../../assets/logo.svg'
 
 interface HeaderProps {
-  siderCollapsed: boolean
-  setSiderCollapsed: (siderCollapsed: boolean) => void
   className?: string
   style?: React.CSSProperties
 }
 
-export default function Header({
-  siderCollapsed,
-  setSiderCollapsed,
-  className,
-  style,
-}: HeaderProps) {
-  const navigate = useNavigate()
-  const siderTriggerIcon = useMemo((): JSX.Element => {
-    return siderCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />
-  }, [siderCollapsed])
-
+export default function Header({ className, style }: HeaderProps) {
   return (
     // my-content-header
     <AntdLayout.Header className={className} style={style}>
-      {/* sider trigger button */}
-      <Button
-        type="primary"
-        icon={siderTriggerIcon}
-        size="large"
-        className="my-sider-trigger"
-        onClick={() => setSiderCollapsed(!siderCollapsed)}
-      />
-
-      <div className="my-header-right-space">
-        <Button
-          type="link"
-          style={{ color: '#fff' }}
-          onClick={() => navigate('/mypage')}
-        >
-          User
-        </Button>
-        <Avatar
-          src={DEFAULT_AVATAR}
-          size="large"
-          style={{ backgroundColor: '#f56a00', verticalAlign: 'middle' }}
-        >
-          User
-        </Avatar>
+      {/* logo */}
+      <div className="my-header-left-logo">
+        <a href="/" className="logo">
+          <img src={LOGO} alt="languages study" />
+          <h1>Languages Study</h1>
+        </a>
       </div>
+
+      <div className="my-header-right-space">@BlaxBerry</div>
     </AntdLayout.Header>
   )
 }

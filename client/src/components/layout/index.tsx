@@ -1,38 +1,40 @@
 import React, { useState } from 'react'
-import { Layout as AntdLayout, Tooltip } from 'antd'
-import { Sider, Content, SettingDrawer } from '../common'
-import { DoubleLeftOutlined } from '@ant-design/icons'
+import { Layout as AntdLayout } from 'antd'
+import {
+  Sider,
+  Content,
+  Header,
+  BackTop,
+  SettingDrawer,
+  SettingDrawerTriggerButton,
+} from '../common'
 
 interface LayoutProps {
   children: React.ReactNode
 }
 export default function Layout({ children }: LayoutProps) {
-  const [siderCollapsed, setSiderCollapsed] = useState<boolean>(false)
   const [drawerCollapsed, setDrawerCollapsed] = useState<boolean>(true)
 
   return (
-    <AntdLayout hasSider className="my-layout">
-      {/* left sider */}
-      <Sider
-        className="my-sider"
-        trigger={null}
-        collapsible
-        collapsed={siderCollapsed}
-      />
+    <AntdLayout className="my-layout">
+      {/* top header */}
+      <Header className="my-header" />
 
-      {/* right content */}
-      <Content
-        className="my-content"
-        siderCollapsed={siderCollapsed}
-        setSiderCollapsed={setSiderCollapsed}
-      >
-        {children}
+      <AntdLayout hasSider>
+        {/* left sider */}
+        <Sider className="my-sider" />
 
-        {/* setting drawer trigger button */}
-        <Tooltip placement="left" title="设置" className="my-drawer-trigger">
-          <DoubleLeftOutlined onClick={() => setDrawerCollapsed(false)} />
-        </Tooltip>
-      </Content>
+        {/* right content */}
+        <Content className="my-content">
+          {children}
+
+          {/* setting drawer trigger button */}
+          <SettingDrawerTriggerButton setDrawerCollapsed={setDrawerCollapsed} />
+
+          {/* back to top button */}
+          <BackTop />
+        </Content>
+      </AntdLayout>
 
       {/* right setting drawer */}
       <SettingDrawer

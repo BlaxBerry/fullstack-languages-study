@@ -1,12 +1,14 @@
 import React from 'react'
 import { useThemeSwitcher } from 'react-css-theme-switcher'
 import {
+  Button,
   Divider,
   Drawer as AntdDrawer,
   Radio,
   RadioChangeEvent,
   Space,
 } from 'antd'
+import { SettingOutlined } from '@ant-design/icons'
 
 interface SettingDrawerProps {
   drawerCollapsed: boolean
@@ -14,6 +16,22 @@ interface SettingDrawerProps {
   className?: string
   style?: React.CSSProperties
 }
+
+type SettingDrawerTriggerButtonProps = Pick<
+  SettingDrawerProps,
+  'setDrawerCollapsed'
+>
+
+export const SettingDrawerTriggerButton = ({
+  setDrawerCollapsed,
+}: SettingDrawerTriggerButtonProps): JSX.Element => (
+  <Button
+    type="primary"
+    icon={<SettingOutlined />}
+    className="my-drawer-trigger"
+    onClick={() => setDrawerCollapsed(false)}
+  />
+)
 
 export default function SettingDrawer({
   drawerCollapsed,
