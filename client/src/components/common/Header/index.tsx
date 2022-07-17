@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react'
-import { Button, Layout as AntdLayout } from 'antd'
+import { useNavigate } from 'react-router-dom'
+import { Avatar, Button, Layout as AntdLayout } from 'antd'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import DEFAULT_AVATAR from '../../../assets/avatar.jpeg'
 
 interface HeaderProps {
   siderCollapsed: boolean
@@ -15,6 +17,7 @@ export default function Header({
   className,
   style,
 }: HeaderProps) {
+  const navigate = useNavigate()
   const siderTriggerIcon = useMemo((): JSX.Element => {
     return siderCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />
   }, [siderCollapsed])
@@ -25,12 +28,28 @@ export default function Header({
       {/* sider trigger button */}
       <Button
         type="primary"
-        shape="circle"
         icon={siderTriggerIcon}
         size="large"
         className="my-sider-trigger"
         onClick={() => setSiderCollapsed(!siderCollapsed)}
       />
+
+      <div className="my-header-right-space">
+        <Button
+          type="link"
+          style={{ color: '#fff' }}
+          onClick={() => navigate('/mypage')}
+        >
+          User
+        </Button>
+        <Avatar
+          src={DEFAULT_AVATAR}
+          size="large"
+          style={{ backgroundColor: '#f56a00', verticalAlign: 'middle' }}
+        >
+          User
+        </Avatar>
+      </div>
     </AntdLayout.Header>
   )
 }

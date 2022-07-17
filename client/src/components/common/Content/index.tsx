@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout as AntdLayout } from 'antd'
+import { BackTop, Button, Layout as AntdLayout } from 'antd'
 import Header from '../Header'
 import Footer from '../Footer'
 
@@ -22,14 +22,21 @@ export default function Content({
     // my-content
     <AntdLayout className={className} style={style}>
       <Header
-        className="my-content-header"
+        className="my-header"
         siderCollapsed={siderCollapsed}
         setSiderCollapsed={setSiderCollapsed}
       />
       <AntdLayout.Content className="my-content-warp">
         {/* true content */}
-        <div className="my-content-true-content">{children}</div>
+        <div className="my-content-true-content">
+          {children}
 
+          <BackTop className="my-back-to-top">
+            <Button type="primary">UP</Button>
+          </BackTop>
+        </div>
+
+        {/* footer */}
         <Footer className="my-footer" />
       </AntdLayout.Content>
     </AntdLayout>

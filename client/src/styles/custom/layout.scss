@@ -3,7 +3,6 @@
 $header-height: 64px;
 
 .my-layout {
-
   // Left Sider
   .my-sider {
     bottom: 0;
@@ -15,22 +14,18 @@ $header-height: 64px;
 
     // Left Sider Top Header
     .my-sider-header {
+      background: rgb(255 255 255 / 20%); // TODO: DELETE
+      color: #fff;
       height: calc($header-height / 2);
+      line-height: calc($header-height / 2);
       margin: calc($header-height / 4);
+      text-align: center;
     }
   }
 
   // Right Contnet
   .my-content {
     $content-padding: 24px;
-
-    // Right Contnet Top Header
-    &-header {
-      padding: 0;
-      position: fixed;
-      width: 100%;
-      z-index: 2;
-    }
 
     // Right Contnet Bottom Content Wrap
     &-warp {
@@ -43,9 +38,56 @@ $header-height: 64px;
         padding: $content-padding;
       }
     }
+
+    // Right Drawer Trigger
+    .my-drawer-trigger {
+      position: fixed;
+      right: $content-padding;
+      top: 50%;
+      transform: scale(2);
+
+      svg {
+        transition: all 0.5s;
+
+        &:hover {
+          transform: scale(1.5);
+        }
+      }
+    }
+
+    // Back to Top button
+    .my-back-to-top {
+      right: $content-padding * 2;
+
+      button {
+        height: 40px !important;
+        padding: 0 !important;
+        width: 40px !important;
+      }
+    }
   }
 
-  // Header
+  // Header ( Right Contnet Top Header )
+  .my-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+
+    &-right-space {
+      align-items: center;
+      display: flex;
+      justify-content: flex-end;
+      position: fixed;
+      right: 24px;
+    }
+  }
+
+  // Right Setting Drawer
+  // .my-setting-drawer { }
 
   // Footer
   .my-footer {

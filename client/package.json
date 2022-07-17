@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "develop": "vite",
+    "develop": "vite --port 4000",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint:es": "eslint --cache . --ext .ts,.tsx,.js",
