@@ -5,8 +5,10 @@ import Home from '../pages/home'
 import About from '../pages/about'
 import NotFound from '../pages/404'
 import Mypage from '../pages/mypage'
-import Words from '../pages/words'
-import WordDetail from '../pages/words/[ID]'
+import WordsList from '../pages/words/list'
+import WordCreate from '../pages/words/create'
+import WordDetail from '../pages/words/detail'
+import Statistics from '../pages/statistics'
 
 export default function RouteView() {
   const location = useLocation()
@@ -20,6 +22,7 @@ export default function RouteView() {
   const routesElements = useRoutes([
     { path: '/home', element: <Home /> },
     { path: '/about', element: <About /> },
+    { path: '/statistics', element: <Statistics /> },
     {
       path: '/mypage',
       children: [{ index: true, element: <Mypage /> }],
@@ -27,11 +30,13 @@ export default function RouteView() {
     {
       path: '/words',
       children: [
-        { index: true, element: <Words /> },
-        { path: ':ID', element: <WordDetail /> },
+        { index: true, element: <Navigate to={'/words/list'} replace /> },
+        { path: 'list', element: <WordsList /> },
+        { path: 'create', element: <WordCreate /> },
+        { path: 'detail', element: <WordDetail /> },
       ],
     },
-    { path: '/', element: <Navigate to={'/home'} /> },
+    { path: '/', element: <Navigate to={'/home'} replace /> },
     { path: '*', element: <NotFound /> },
   ])
 
