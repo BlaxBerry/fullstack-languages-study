@@ -1,2 +1,2 @@
-export { default as getPersonList } from './getPersonList'
-export { default as createPerson } from './createPerson'
+export * from './queries'
+export * from './mutations'

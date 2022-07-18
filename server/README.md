@@ -22,15 +22,23 @@
 ## Folder
 
 ```js
-|- config  // project configurations
-|- data
+|- config
+|- data  // mock data
+    |- en
+        |- words_list.json
+        |- ...
+    |- ja
 |- graphql
-    |- mutaion // mutations' field type
-    |- query // queries' field type
-    |- resolver  // resolver functions
+    |- api
+        |- mutaions // mutations field & type
+        |- queries // queries field & type
+    |- resolver
+        |- mutations  // mutations resolver functions
+        |- queries // queries resolver functions
     |- schema
 |- middlewares
 |- utils
+|- types // common types only for graphql resolver functions
 |- index.ts  // main
 |- package.json
 |- tsconfig.json

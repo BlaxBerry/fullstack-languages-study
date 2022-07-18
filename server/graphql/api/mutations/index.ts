@@ -1,5 +1,5 @@
-import createPerson from './createPerson'
+import createTestMessage from './createTestMessage'
 
 export default {
-  createPerson,
+  createTestMessage,
 }

@@ -1,5 +1,7 @@
-import getPersonList from './getPersonList'
+import getTestMessage from './getTestMessage'
+import getWordsList from './getWordsList'
 
 export default {
-  getPersonList,
+  TestMessage: getTestMessage,
+  getWordsList,
 }
