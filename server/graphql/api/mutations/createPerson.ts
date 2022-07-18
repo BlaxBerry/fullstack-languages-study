@@ -1,6 +1,6 @@
 import { GraphQLInputObjectType, GraphQLInt, GraphQLNonNull, GraphQLString } from 'graphql'
-import { PersonListType } from '../query/getPersonList'
-import createPerson, { CreatePersonProps } from '../resolver/createPerson'
+import { PersonListType } from '../queries/getPersonList'
+import createPerson, { CreatePersonProps } from '../../resolver/createPerson'
 
 const InputType = new GraphQLInputObjectType({
   name: 'PersonCreateInputType',
@@ -30,11 +30,18 @@ export default {
 }
 
 /*
-mutation {
-  createPerson(input: {name: "奥特曼", age: 29}) {
+mutation createPerson($input: PersonCreateInputType!) {
+  createPerson(input: $input) {
     id
     name
     age
+  }
+}
+
+{
+  "input": {
+    "name": "安",
+    "age": 222
   }
 }
 */

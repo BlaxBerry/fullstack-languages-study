@@ -20,6 +20,6 @@ app.use(
 )
 
 app.listen(PORT, () => {
-  // console.log(`Server runnning at http://localhost:${PORT}`)
+  console.log(`Server runnning at http://localhost:${PORT}`)
   console.log(`Graphql IDE Server runnning at http://localhost:${PORT}/graphql`)
 })

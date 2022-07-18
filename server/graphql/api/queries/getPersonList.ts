@@ -1,5 +1,5 @@
 import { GraphQLList, GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLInt } from 'graphql'
-import { getPersonList } from '../resolver'
+import { getPersonList } from '../../resolver'
 
 export const PersonType = new GraphQLObjectType({
   name: 'PersonType',
