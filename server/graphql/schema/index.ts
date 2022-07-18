@@ -1,6 +1,6 @@
 import { GraphQLObjectType, GraphQLSchema } from 'graphql'
 import queryTypeFileds from '../api/queries'
-import mutaionsTypeFileds from '../api/mutations'
+// import mutaionsTypeFileds from '../api/mutations'
 
 export default new GraphQLSchema({
   // queries
@@ -11,12 +11,12 @@ export default new GraphQLSchema({
       ...queryTypeFileds,
     },
   }),
-  // mutations
-  mutation: new GraphQLObjectType({
-    name: 'Mutation',
-    description: 'The root Mutation type.',
-    fields: {
-      ...mutaionsTypeFileds,
-    },
-  }),
+  // // mutations
+  // mutation: new GraphQLObjectType({
+  //   name: 'Mutation',
+  //   description: 'The root Mutation type.',
+  //   fields: {
+  //     ...mutaionsTypeFileds,
+  //   },
+  // }),
 })

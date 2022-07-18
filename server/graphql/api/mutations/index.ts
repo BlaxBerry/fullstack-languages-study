@@ -1,5 +1,5 @@
-import createTestMessage from './createTestMessage'
+// import updateTestMessage from './updateTestMessage'
 
 export default {
-  createTestMessage,
+  // testMessage: updateTestMessage,
 }

@@ -1,28 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from 'antd'
 import { useMutation, useQuery } from '@apollo/client'
-import { CREATE_PERSON, GET_PERSONLIST } from '../graphql'
+import { GET_TEST_MESSAGE, CREATE_TEST_MESSAGE } from '../graphql'
 
 export default function About() {
-  const { loading, error, data } = useQuery(GET_PERSONLIST)
-  console.log(loading, error, data)
+  const {
+    data: testMessageData,
+    loading: testMessageLoading,
+    error: testMessageError,
+  } = useQuery(GET_TEST_MESSAGE)
 
-  const [createPerson, { data: createData, loading: createLoading }] =
-    useMutation(CREATE_PERSON)
-  console.log(createData, createLoading)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (testMessageError) setErrorMessage(testMessageError?.message)
+  }, [testMessageError])
+
+  const [
+    createTestMessage,
+    { data: createTestMessageData, loading: createTestMessageLoading },
+  ] = useMutation(CREATE_TEST_MESSAGE)
 
   return (
     <div style={{ height: '600vh' }}>
-      <hr />
       <div>
+        <h3>Test Message</h3>
+
+        {testMessageLoading && <span>loading...</span>}
+        {testMessageData ? (
+          <span>{testMessageData?.testMessage?.message}</span>
+        ) : (
+          <span>{errorMessage} 暂无数据</span>
+        )}
+      </div>
+
+      <hr />
+
+      <div>
+        <h3>Create Test Message</h3>
+        {createTestMessageLoading && <span>...loading</span>}
+        {createTestMessageData ? (
+          <span>{createTestMessageData?.testMessage?.message}</span>
+        ) : (
+          <span>{errorMessage}</span>
+        )}
+        <br />
         <Button
           type="primary"
           onClick={() => {
-            createPerson({
+            createTestMessage({
               variables: {
                 input: {
-                  name: 'xxxx',
-                  age: 222,
+                  message: 'xxxxxx',
                 },
               },
             })

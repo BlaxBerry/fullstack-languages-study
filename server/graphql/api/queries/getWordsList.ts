@@ -34,7 +34,7 @@ export default {
 
 /*
 query getWordsList($language: String!) {
-  getWordsList(language: $language) {
+  wordsList(language: $language) {
     id
     name
   }
