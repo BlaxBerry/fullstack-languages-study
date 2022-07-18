@@ -1,0 +1,23 @@
+.my-statistics-group {
+
+  &-card {
+    height: 150px;
+
+    &-title {
+      align-items: center;
+      color: #808080;
+      display: flex;
+      font-size: 0.5rem;
+      justify-content: space-between;
+    
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    &-chart {
+      height: 60px;
+    }
+  }
+}

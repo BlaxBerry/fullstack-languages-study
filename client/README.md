@@ -40,7 +40,7 @@ SPA admin client
   - [stylelint]()
 - libs
   - [ahooks]()
-  - [echarts]()
+  - [ant-design charts]()
   - [react-i18-next]()
   - [react-css-theme-switcher]()
 
