@@ -1,6 +1,6 @@
 import React from 'react'
 import { Layout as AntdLayout } from 'antd'
-import Footer from '../Footer'
+// import Footer from '../Footer'
 
 interface ContentProps {
   children: React.ReactNode
@@ -17,7 +17,7 @@ export default function Content({ children, className, style }: ContentProps) {
         <div className="my-content-true-content">{children}</div>
 
         {/* footer */}
-        <Footer className="my-footer" />
+        {/* <Footer className="my-footer" /> */}
       </AntdLayout.Content>
     </AntdLayout>
   )

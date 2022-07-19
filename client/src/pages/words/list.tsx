@@ -1,52 +1,82 @@
 import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_WORDS_LIST } from '../../graphql'
-import { WordsListItem } from '../../types'
+import { GetWordsList, LanguageType, WordsListItem } from '../../types'
+import { useErrorHandling } from '../../hooks'
+import { WordsListContent } from '../../components/pages'
+import { PageHeader, Pagination, Space, Statistic, Tabs } from 'antd'
+
+type LanguageGroupItemType = {
+  value: LanguageType
+  name: string
+}
+const LANGUAGES_GROUP: LanguageGroupItemType[] = [
+  {
+    value: 'en',
+    name: '英语',
+  },
+  {
+    value: 'ja',
+    name: '日语',
+  },
+  {
+    value: 'it' as LanguageType,
+    name: '意大利语',
+  },
+]
 
 export default function WordsList() {
-  const [wordsLanguagesSelected, setWordsLanguagesSelected] = useState('en')
+  const { handleGrapqhlRequestError } = useErrorHandling()
+  const [wordsLanguagesSelected, setWordsLanguagesSelected] =
+    useState<LanguageType>('en')
+
   const {
     data: wordsListData,
     loading: wordsListLoading,
     error: wordsListError,
-  } = useQuery(GET_WORDS_LIST, {
+  } = useQuery<GetWordsList>(GET_WORDS_LIST, {
     variables: { language: wordsLanguagesSelected },
   })
 
-  // TODO: 共通化
-  // grapqhl request error handling
   useEffect(() => {
-    if (wordsListError?.clientErrors) {
-      console.log('Client Error: ', wordsListError?.clientErrors)
-    }
-    if (wordsListError?.graphQLErrors) {
-      console.log('Graqhql Error: ', wordsListError?.graphQLErrors)
-    }
-    if (wordsListError?.networkError) {
-      console.log('Network Error: ', wordsListError?.networkError?.message)
-    }
+    // grapqhl request error handling
+    if (wordsListError) handleGrapqhlRequestError(wordsListError)
   }, [wordsListError])
 
   return (
     <div>
-      <h1>Words List</h1>
+      <PageHeader
+        title="单词列表"
+        subTitle="xxxxx"
+        extra={
+          <Space size={'large'}>
+            <Statistic title="语言" value="英语" />
+            <Statistic title="总数" value={wordsListData?.wordsList?.length} />
+            <Statistic title="新增" value={2} />
+          </Space>
+        }
+        footer={
+          <Tabs
+            // type="card"
+            size="large"
+            defaultActiveKey={LANGUAGES_GROUP[0].value}
+            onChange={(activeKey: string) => {
+              setWordsLanguagesSelected(activeKey as LanguageType)
+            }}
+          >
+            {LANGUAGES_GROUP.map((item) => (
+              <Tabs.TabPane key={item.value} tab={item.name} />
+            ))}
+          </Tabs>
+        }
+      />
 
-      <button onClick={() => setWordsLanguagesSelected('en')}>en words</button>
-      <button onClick={() => setWordsLanguagesSelected('jaa')}>ja words</button>
+      <WordsListContent
+        loading={wordsListLoading}
+        dataSource={wordsListData?.wordsList as WordsListItem[]}
+      />
 
-      {wordsListLoading && <div>Loading...</div>}
-
-      {!wordsListLoading && !wordsListData && <div>暂无数据</div>}
-
-      {!wordsListLoading &&
-        wordsListData &&
-        wordsListData?.wordsList?.map(
-          ({ id, name }: WordsListItem, index: number) => (
-            <div key={id}>
-              {index + 1}. {name}
-            </div>
-          )
-        )}
+      <Pagination defaultCurrent={1} total={50} />
     </div>
   )
 }

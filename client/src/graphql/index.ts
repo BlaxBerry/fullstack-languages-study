@@ -9,20 +9,4 @@ const GET_WORDS_LIST = gql`
   }
 `
 
-const GET_TEST_MESSAGE = gql`
-  query {
-    testMessage {
-      message
-    }
-  }
-`
-
-const CREATE_TEST_MESSAGE = gql`
-  mutation createTestMessage($input: CreateTestMessageInputType!) {
-    testMessage(input: $input) {
-      message
-    }
-  }
-`
-
-export { GET_WORDS_LIST, GET_TEST_MESSAGE, CREATE_TEST_MESSAGE }
+export { GET_WORDS_LIST }

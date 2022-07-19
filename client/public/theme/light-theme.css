@@ -1,1 +1,5 @@
 /* Ant Design default style */
+
+.my-layout .my-content .my-content-true-content {
+    background-color: #fff;
+}
