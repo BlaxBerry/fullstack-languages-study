@@ -10,24 +10,16 @@ export type WordsListItem = {
 export type WordType = 'n.' | 'vt.' | 'adj.' | 'adv.'
 export type LanguageType = 'en' | 'ja'
 
-export type WordsDetail = {
+export interface WordCreateInput {
+  // [key: string]: unknown
   id: string
   name: string
   pronunciation: string
-  types: WordType[]
-  createAt: Date
-  count: number
-  meanList: {
-    [key: string]: {
-      means: string[]
-      expressions: {
-        expression: string
-        transltion: string
-      }[]
-      sentences: {
-        sentence: string
-        transltion: string
-      }[]
-    }[]
-  }
+  language: LanguageType
+  area: string[]
+  meaningList: {
+    type: string
+    meaning: string
+  }[]
+  publishAt: Date
 }

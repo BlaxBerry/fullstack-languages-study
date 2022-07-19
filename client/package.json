@@ -17,6 +17,7 @@
     "@ant-design/charts": "^1.4.1",
     "@ant-design/icons": "^4.7.0",
     "@apollo/client": "^3.6.9",
+    "ahooks": "^3.5.2",
     "antd": "^4.21.6",
     "graphql": "^16.5.0",
     "react": "^18.2.0",
