@@ -9,10 +9,10 @@ import {
   Tag,
   Tooltip,
 } from 'antd'
-import { WordCreateInput } from '../../../types'
+import { CreateWordInput } from '../../../types'
 
 interface WordCreateForm4Props {
-  formValues: WordCreateInput
+  formValues: CreateWordInput
   previousStep: () => void
   onClear: () => void
   onSubmit: () => void

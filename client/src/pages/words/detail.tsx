@@ -1,10 +1,32 @@
+import { useQuery } from '@apollo/client'
 import { PageHeader, Space, Statistic, Tabs } from 'antd'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { GET_WORD_DETAIL } from '../../graphql'
+import { useErrorHandling } from '../../hooks'
+import { GetWordsDetail } from '../../types'
 
 export default function WordDetail() {
   const [searchParams] = useSearchParams()
   const [wordID] = React.useState(searchParams.get('id'))
+
+  const { handleGrapqhlRequestError } = useErrorHandling()
+
+  const {
+    data: wordDetailData,
+    loading: wordDetailLoading,
+    error: wordDetailError,
+  } = useQuery<GetWordsDetail>(GET_WORD_DETAIL, {
+    variables: {
+      input: { id: wordID, language: 'en' },
+    },
+  })
+  console.log(wordDetailData, wordDetailLoading)
+
+  useEffect(() => {
+    // grapqhl request error handling
+    if (wordDetailError) handleGrapqhlRequestError(wordDetailError)
+  }, [wordDetailError])
 
   return (
     <div>

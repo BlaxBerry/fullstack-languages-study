@@ -10,13 +10,13 @@ export type WordsListItem = {
 export type WordType = 'n.' | 'vt.' | 'adj.' | 'adv.'
 export type LanguageType = 'en' | 'ja'
 
-export type sentencesListItem = {
+export type SentencesListItem = {
   sentence: string
   translation: string
 }
 
-export interface WordCreateInput {
-  // [key: string]: unknown
+export interface WordDetail {
+  id: string
   name: string
   pronunciation: string
   language: LanguageType
@@ -28,8 +28,15 @@ export interface WordCreateInput {
   expressionsList: {
     expression: string
     translation: string
-    sentencesList: sentencesListItem[]
+    sentencesList: SentencesListItem[]
   }[]
-  sentencesList: sentencesListItem[]
+  sentencesList: SentencesListItem[]
   publishAt: Date
 }
+
+export type GetWordDetailInput = {
+  id: string
+  language: LanguageType
+}
+
+export type CreateWordInput = Omit<WordDetail, 'id'>

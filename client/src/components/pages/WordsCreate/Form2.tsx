@@ -5,9 +5,9 @@ import {
   PlusOutlined,
 } from '@ant-design/icons'
 import { Form, Space, Input, Button, Typography, Col, Row } from 'antd'
-import { WordCreateInput } from '../../../types'
+import { CreateWordInput } from '../../../types'
 
-type WordCreateFormValuesType = Pick<WordCreateInput, 'expressionsList'>
+type WordCreateFormValuesType = Pick<CreateWordInput, 'expressionsList'>
 
 interface WordCreateForm2Props {
   setFormValues: Dispatch<SetStateAction<WordCreateFormValuesType>>

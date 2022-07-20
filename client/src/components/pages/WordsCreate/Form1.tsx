@@ -1,10 +1,10 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
 import { Form, Space, Input, Button, Select, Typography } from 'antd'
-import { WordCreateInput } from '../../../types'
+import { CreateWordInput } from '../../../types'
 
 type WordCreateFormValuesType = Pick<
-  WordCreateInput,
+  CreateWordInput,
   'name' | 'pronunciation' | 'language' | 'area' | 'meaningsList'
 >
 interface WordCreateForm1Props {

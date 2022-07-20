@@ -8,5 +8,32 @@ const GET_WORDS_LIST = gql`
     }
   }
 `
+const GET_WORD_DETAIL = gql`
+  query getWordDetail($input: WordDetailInput!) {
+    wordDetail(input: $input) {
+      id
+      name
+      language
+      pronunciation
+      publishAt
+      meaningsList {
+        type
+        meanings
+      }
+      expressionsList {
+        expression
+        translation
+        sentencesList {
+          sentence
+          translation
+        }
+      }
+      sentencesList {
+        sentence
+        translation
+      }
+    }
+  }
+`
 
-export { GET_WORDS_LIST }
+export { GET_WORDS_LIST, GET_WORD_DETAIL }

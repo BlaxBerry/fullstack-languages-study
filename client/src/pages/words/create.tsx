@@ -7,11 +7,11 @@ import {
   WordCreateForm3 as Form3,
   WordCreateForm4 as Form4,
 } from '../../components/pages'
-import { WordCreateInput } from '../../types'
+import { CreateWordInput } from '../../types'
 
 export default function WordCreate() {
-  const [formValues, setFormValues] = useSetState<WordCreateInput>(
-    {} as WordCreateInput
+  const [formValues, setFormValues] = useSetState<CreateWordInput>(
+    {} as CreateWordInput
   )
   const [currentStep, setCurrentStep] = useState<number>(1)
 

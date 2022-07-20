@@ -1,10 +1,10 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import { Form, Typography, Space, Input, Row, Col, Button } from 'antd'
 import { CloseCircleOutlined, PlusOutlined } from '@ant-design/icons'
-import { WordCreateInput } from '../../../types'
+import { CreateWordInput } from '../../../types'
 
 type WordCreateFormValuesType = Pick<
-  WordCreateInput,
+  CreateWordInput,
   'sentencesList' | 'publishAt'
 >
 
