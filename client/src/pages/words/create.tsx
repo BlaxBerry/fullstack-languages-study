@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSetState } from 'ahooks'
 import {
   WordCreateStepsBar as StepsBar,
@@ -7,13 +7,27 @@ import {
   WordCreateForm3 as Form3,
   WordCreateForm4 as Form4,
 } from '../../components/pages'
-import { CreateWordInput } from '../../types'
+import { CreateWordInput, CreateWord, WordDetail } from '../../types'
+import { useMutation } from '@apollo/client'
+import { CREATE_WORD } from '../../graphql'
+import { useErrorHandling } from '../../hooks'
 
 export default function WordCreate() {
+  const { handleGrapqhlRequestError } = useErrorHandling()
+
   const [formValues, setFormValues] = useSetState<CreateWordInput>(
     {} as CreateWordInput
   )
   const [currentStep, setCurrentStep] = useState<number>(1)
+
+  const [
+    createWord,
+    {
+      data: createWordData,
+      loading: createWordLoading,
+      error: createWordError,
+    },
+  ] = useMutation<CreateWord>(CREATE_WORD)
 
   const nextStep = (): void => {
     setCurrentStep((currentStep) => currentStep + 1)
@@ -27,10 +41,21 @@ export default function WordCreate() {
   }
 
   const onSubmit = (): void => {
-    console.log(formValues)
+    createWord({
+      variables: {
+        input: formValues,
+      },
+    })
+    if (createWordData) {
+      console.log('SUCCESS')
+      onClear()
+    }
   }
 
-  console.log(formValues)
+  useEffect(() => {
+    // grapqhl request error handling
+    if (createWordError) handleGrapqhlRequestError(createWordError)
+  }, [createWordError])
 
   return (
     <div className="my-word-create">
@@ -62,6 +87,8 @@ export default function WordCreate() {
             previousStep={previousStep}
             onClear={onClear}
             onSubmit={onSubmit}
+            createWordLoading={createWordLoading}
+            createWordData={createWordData?.createWord as WordDetail}
           />
         )}
       </div>

@@ -13,3 +13,8 @@ export interface GetWordsList {
 export interface GetWordsDetail {
   wordDetail: WordDetail
 }
+
+// createWord
+export interface CreateWord {
+  createWord: WordDetail
+}

@@ -9,13 +9,15 @@ import {
   Tag,
   Tooltip,
 } from 'antd'
-import { CreateWordInput } from '../../../types'
+import { CreateWordInput, WordDetail } from '../../../types'
 
 interface WordCreateForm4Props {
   formValues: CreateWordInput
   previousStep: () => void
   onClear: () => void
   onSubmit: () => void
+  createWordLoading: boolean
+  createWordData: WordDetail
 }
 
 export default function StepsForm4({
@@ -23,6 +25,7 @@ export default function StepsForm4({
   previousStep,
   onClear,
   onSubmit,
+  createWordLoading,
 }: WordCreateForm4Props) {
   const [clearLoading, setClearLoading] = useState<boolean>(false)
 
@@ -185,7 +188,7 @@ export default function StepsForm4({
             放弃
           </Button>
         </Tooltip>
-        <Button type="primary" onClick={onSubmit} loading={false}>
+        <Button type="primary" onClick={onSubmit} loading={createWordLoading}>
           提交
         </Button>
         <Button onClick={previousStep}>上一步</Button>

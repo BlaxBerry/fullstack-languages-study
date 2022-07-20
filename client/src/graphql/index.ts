@@ -36,4 +36,32 @@ const GET_WORD_DETAIL = gql`
   }
 `
 
-export { GET_WORDS_LIST, GET_WORD_DETAIL }
+const CREATE_WORD = gql`
+  mutation createWord($input: CreateWordInput!) {
+    createWord(input: $input) {
+      id
+      name
+      pronunciation
+      publishAt
+      area
+      meaningsList {
+        type
+        meanings
+      }
+      expressionsList {
+        expression
+        translation
+        sentencesList {
+          sentence
+          translation
+        }
+      }
+      sentencesList {
+        sentence
+        translation
+      }
+    }
+  }
+`
+
+export { GET_WORDS_LIST, GET_WORD_DETAIL, CREATE_WORD }

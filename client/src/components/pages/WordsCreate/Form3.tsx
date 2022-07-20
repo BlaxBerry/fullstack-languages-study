@@ -25,10 +25,7 @@ export default function StepsForm3({
   const [formInstance] = Form.useForm()
 
   const onFinish = (values: WordCreateFormValuesType) => {
-    setFormValues({
-      ...values,
-      publishAt: new Date(),
-    })
+    setFormValues(values)
     nextStep()
   }
   const onReset = (): void => {
