@@ -1,0 +1,47 @@
+
+
+// step 4
+.word-create-form-4 {
+
+  .word-create-meanings-list {
+    font-size: 16px !important;
+    margin: 0 !important;
+        
+    strong {
+      display: inline-block;
+      font-weight: 600;
+      margin-right: 1rem;
+      text-align: right;
+      width: 60px;
+    }
+
+  }
+
+  .word-create-expressions-list {
+
+    &-expression {
+      font-size: 20px !important;
+      font-weight: 600;
+    }
+
+    &-translation {
+      color: #00000073;
+      font-size: 16px !important;
+      margin-left: 1rem;
+                
+    }
+
+    .ant-typography {
+      margin: 0 !important;
+    }
+        
+  }
+
+  .word-create-sentences-list {
+    padding: 0 0.5rem;
+
+    &-sentence {
+      margin: 0;
+    }
+  }
+}

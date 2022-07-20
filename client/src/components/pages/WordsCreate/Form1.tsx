@@ -2,13 +2,12 @@ import React, { Dispatch, SetStateAction } from 'react'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
 import { Form, Space, Input, Button, Select, Typography } from 'antd'
 import { WordCreateInput } from '../../../types'
-import { useFormValidate } from '../../../hooks'
 
 type WordCreateFormValuesType = Pick<
   WordCreateInput,
-  'name' | 'pronunciation' | 'language' | 'area' | 'meaningList'
+  'name' | 'pronunciation' | 'language' | 'area' | 'meaningsList'
 >
-export interface WordCreateForm1Props {
+interface WordCreateForm1Props {
   setFormValues: Dispatch<SetStateAction<WordCreateFormValuesType>>
   nextStep: () => void
 }
@@ -21,7 +20,6 @@ export default function StepsForm1({
   setFormValues,
 }: WordCreateForm1Props) {
   const [formInstance] = Form.useForm()
-  const { isBlacnk } = useFormValidate()
 
   const onFinish = (values: WordCreateFormValuesType) => {
     setFormValues(values)
@@ -49,34 +47,28 @@ export default function StepsForm1({
           name={'name'}
           label={'单词'}
           tooltip="单词名"
-          rules={[
-            { required: true, message: '必须项' },
-            { validator: async (_, value) => isBlacnk(value) },
-          ]}
+          rules={[{ required: true, whitespace: true, message: '必须项' }]}
         >
-          <Input />
+          <Input placeholder="单词名" />
         </Form.Item>
         {/* 1.2. pronunciation 单词读音 */}
         <Form.Item
           name={'pronunciation'}
           label={'读音'}
           tooltip="单词读音"
-          rules={[
-            { required: true, message: '必须项' },
-            { validator: async (_, value) => isBlacnk(value) },
-          ]}
+          rules={[{ required: true, whitespace: true, message: '必须项' }]}
         >
-          <Input />
+          <Input placeholder="单词读音" />
         </Form.Item>
         {/* 1.3. language 单词属于哪国语言 */}
         <Form.Item
           name={'language'}
           label={'语言'}
           tooltip="所属国家语言"
-          rules={[{ required: true, message: '必须项' }]}
+          rules={[{ required: true, whitespace: true, message: '必须项' }]}
         >
           {/* TODO: 通过API获取 */}
-          <Select style={{ minWidth: INPUT_WIDTH }}>
+          <Select style={{ minWidth: INPUT_WIDTH }} placeholder="请选择">
             <Select.Option value="en">英语</Select.Option>
             <Select.Option value="ja">日语</Select.Option>
           </Select>
@@ -91,6 +83,7 @@ export default function StepsForm1({
           {/* TODO: 通过API获取 */}
           <Select
             showArrow
+            placeholder="请选择"
             mode="tags"
             maxTagCount="responsive"
             tokenSeparators={[',', '・', '、', ' ']} // TODO: 设定 分隔字符（不能算入的字符）
@@ -104,19 +97,32 @@ export default function StepsForm1({
       {/* 2. 词性 & 对应含义 */}
       <Typography.Title level={3}>词性与含义</Typography.Title>
       {/* 通过 initialValue 在 list 动态添加前默认存在一组 */}
-      <Form.List name="meaningList" initialValue={[{ type: '', meanings: '' }]}>
+      <Form.List
+        name="meaningsList"
+        initialValue={[{ type: null, meanings: null }]}
+      >
         {(fields, { add, remove }) => (
           <>
             {fields.map(({ key, name, ...restField }) => (
-              <Space key={key} wrap style={{ display: 'flex' }} align="center">
+              <Space
+                key={key}
+                wrap
+                style={{ display: 'flex' }}
+                align="baseline"
+              >
                 {/* 2.1. type 词性名 */}
                 <Form.Item
                   {...restField}
                   name={[name, 'type']}
-                  rules={[{ required: true, message: '必须项' }]}
+                  rules={[
+                    { required: true, whitespace: true, message: '必须项' },
+                  ]}
                 >
                   {/* TODO: 通过API获取 */}
-                  <Select style={{ minWidth: INPUT_WIDTH }}>
+                  <Select
+                    style={{ minWidth: INPUT_WIDTH }}
+                    placeholder="请选择"
+                  >
                     <Select.Option value="n.">名词</Select.Option>
                     <Select.Option value="vt.">及物动词</Select.Option>
                     <Select.Option value="vi.">不及物动词</Select.Option>
@@ -128,11 +134,10 @@ export default function StepsForm1({
                   name={[name, 'meanings']}
                   style={{ minWidth: INPUT_WIDTH * 2 + INPUT_SPCAE }}
                   rules={[
-                    { required: true, message: '必须项' },
-                    { validator: async (_, value) => isBlacnk(value) },
+                    { required: true, whitespace: true, message: '必须项' },
                   ]}
                 >
-                  <Input />
+                  <Input placeholder="单词含义" />
                 </Form.Item>
                 {/* 2.3. 删除按钮 */}
                 <MinusCircleOutlined onClick={() => remove(name)} />
@@ -156,10 +161,12 @@ export default function StepsForm1({
       {/* 4. sumbit button */}
       <Form.Item>
         <Space>
+          <Button danger onClick={onReset}>
+            清空
+          </Button>
           <Button htmlType="submit" type="primary">
             下一步
           </Button>
-          <Button onClick={onReset}>清空</Button>
         </Space>
       </Form.Item>
     </Form>

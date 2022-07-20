@@ -1,0 +1,30 @@
+/* 覆盖修改 Ant Design 样式 */
+
+.ant-collapse {
+
+  &-header {
+    
+    &-text {
+      flex: 1;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &-content-box {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+
+    .ant-list {
+
+      &-item {
+        padding: 10px 0 !important;
+      }
+    }
+
+    .ant-typography {
+      margin: 0 !important;
+    }
+  }
+}

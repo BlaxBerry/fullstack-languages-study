@@ -21,6 +21,10 @@ export default function WordCreate() {
   const previousStep = (): void => {
     setCurrentStep((currentStep) => currentStep - 1)
   }
+  const onClear = (): void => {
+    setCurrentStep(1)
+    setFormValues({})
+  }
 
   const onSubmit = (): void => {
     console.log(formValues)
@@ -54,8 +58,9 @@ export default function WordCreate() {
         )}
         {currentStep === 4 && (
           <Form4
-            setFormValues={setFormValues}
+            formValues={formValues}
             previousStep={previousStep}
+            onClear={onClear}
             onSubmit={onSubmit}
           />
         )}

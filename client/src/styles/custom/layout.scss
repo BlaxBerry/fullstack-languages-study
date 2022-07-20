@@ -39,6 +39,7 @@ $content-padding: 24px;
     &-true-content {
       min-height: calc(100vh - $header-height);
       padding: $content-padding;
+      padding-right: $header-height;
     }
 
     // Right Drawer Trigger

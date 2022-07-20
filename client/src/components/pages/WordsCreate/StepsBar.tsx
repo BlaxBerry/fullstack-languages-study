@@ -7,8 +7,8 @@ interface WordCreateStepsBarProps {
 
 export default function StepsBar({ currentStep }: WordCreateStepsBarProps) {
   const CREATE_STEPS = [
-    { step: 1, title: '基本解释' },
-    { step: 2, title: '相关短语' },
+    { step: 1, title: '词性含义' },
+    { step: 2, title: '短语搭配' },
     { step: 3, title: '相关例句' },
     { step: 4, title: '完成提交' },
   ]
