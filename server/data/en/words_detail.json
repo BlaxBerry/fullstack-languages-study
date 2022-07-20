@@ -1,0 +1,64 @@
+[
+  {
+    "id": "sentence+2022-07-18",
+    "name": "sentence",
+    "pronunciation": "xxasx",
+    "language": "en",
+    "area": ["a", "xx", "132"],
+    "meaningsList": [
+      {
+        "type": "v.",
+        "meanings": "xxx,asxx,asas,asc"
+      },
+      {
+        "type": "n.",
+        "meanings": "x132x,a24,as234,23sc"
+      }
+    ],
+    "expressionsList": [
+      {
+        "expression": "asc-adv",
+        "translation": "9230i2",
+        "sentencesList": [
+          {
+            "sentence": "sdfnjkdasjnfdvfk",
+            "translation": "9230i2"
+          }
+        ]
+      }
+    ],
+    "sentencesList": [
+      {
+        "sentence": "sdfnjkdasjnfdvfk",
+        "translation": "9230i2"
+      },
+      {
+        "sentence": "12342122435",
+        "translation": "dsfdgdfsd"
+      }
+    ],
+    "publishAt": "2022-07-20T08:32:13.348Z"
+  },
+  {
+    "id": "spaghetti+2022-07-18",
+    "name": "spaghetti",
+    "pronunciation": "xxasx",
+    "language": "en",
+    "area": [],
+    "meaningsList": [],
+    "expressionsList": [
+      {
+        "expression": "asc-adv",
+        "translation": "9230i2",
+        "sentencesList": [
+          {
+            "sentence": "sdfnjkdasjnfdvfk",
+            "translation": "9230i2"
+          }
+        ]
+      }
+    ],
+    "sentencesList": [],
+    "publishAt": "2022-07-20T08:32:13.348Z"
+  }
+]

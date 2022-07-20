@@ -35,12 +35,24 @@
     |- resolver
         |- mutations  // mutations resolver functions
         |- queries // queries resolver functions
+        |- types // common types only for graphql resolver functions
     |- schema
 |- middlewares
 |- utils
-|- types // common types only for graphql resolver functions
 |- index.ts  // main
 |- package.json
 |- tsconfig.json
 |- ...
 ```
+
+创建 query
+
+1. graphql/resolver/
+2. graphql/api/queries
+3. graphql/schema
+
+创建 mustaion
+
+1. graphql/resolver/
+2. graphql/api/mutations
+3. graphql/schema

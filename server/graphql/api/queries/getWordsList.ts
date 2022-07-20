@@ -1,9 +1,9 @@
 import { GraphQLList, GraphQLObjectType, GraphQLNonNull, GraphQLString } from 'graphql'
-import { LanguageType } from '../../../types'
+import { LanguageType } from '../../resolver/types'
 import { getWordsList } from '../../resolver'
 
 const WordsListItemType = new GraphQLObjectType({
-  name: 'WordsListItemType',
+  name: 'WordsListItem',
   description: 'Words List Item Type.',
   fields: {
     id: {
@@ -21,7 +21,7 @@ const WordListType = new GraphQLList(WordsListItemType)
 
 export default {
   type: WordListType,
-  description: 'Get list of Words data.',
+  description: 'Get List of Words of Specify Languag.',
   args: {
     language: {
       type: new GraphQLNonNull(GraphQLString),
