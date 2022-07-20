@@ -1,5 +1,5 @@
-// import updateTestMessage from './updateTestMessage'
+import createWord from './createWord'
 
 export default {
-  // testMessage: updateTestMessage,
+  createWord: createWord,
 }

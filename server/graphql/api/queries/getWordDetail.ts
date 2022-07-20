@@ -55,7 +55,7 @@ const ExpressionsListItemType = new GraphQLObjectType({
   },
 })
 
-const WordDetailType = new GraphQLObjectType({
+export const WordDetailType = new GraphQLObjectType({
   name: 'WordDetail',
   description: 'Words List Item.',
   fields: {
@@ -75,6 +75,10 @@ const WordDetailType = new GraphQLObjectType({
       type: new GraphQLNonNull(GraphQLString),
       description: 'The Word Language.',
     },
+    area: {
+      type: new GraphQLList(GraphQLString),
+      description: 'The Word Area.',
+    },
     publishAt: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'The Word Publish Time.',
@@ -84,7 +88,7 @@ const WordDetailType = new GraphQLObjectType({
       description: 'The Word Meanings List.',
     },
     expressionsList: {
-      type: ExpressionsListItemType,
+      type: new GraphQLList(ExpressionsListItemType),
       description: 'The Word Expressions List.',
     },
     sentencesList: {

@@ -14,7 +14,7 @@ const getWordDetail = async ({ id, language }: GetWordDetailInput): Promise<Word
   // TODO：1. 判断参数是否合法
 
   // 2. 获取数据
-  const filePath = path.join(__dirname, `../../../data/${language}/words_detail.json`)
+  const filePath = path.join(__dirname, `../../../data/${language}/words_details.json`)
   const wordDetailsList = await readFile(filePath, 'utf-8')
   const wordDetail = JSON.parse(wordDetailsList).find((item: WordDetail) => item.id === id)
   return wordDetail

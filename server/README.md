@@ -3,6 +3,10 @@
 - [Description](#description)
 - [Tech Stack](#teach-stack)
 - [Folder](#folder)
+- [Data Folder Structure](#data-folder-structure)
+- [Data Structure](#data-structure)
+- [How to Develop](#how-to-develop)
+- [How to Setup](#how-to-setup)
 
 ## Description
 
@@ -45,14 +49,116 @@
 |- ...
 ```
 
-创建 query
+## Data Folder Structure
 
-1. graphql/resolver/
-2. graphql/api/queries
-3. graphql/schema
+```js
+|- data
+    |- [languag]
+        |- word_details.json
+        |- words_list.json
+    |- [languag]
+        |- word_details.json
+        |- words_list.json
+    |- ...
 
-创建 mustaion
+```
 
-1. graphql/resolver/
-2. graphql/api/mutations
-3. graphql/schema
+## Data Structure
+
+Check More Detail on Graphql IDE
+
+1. [finish setup](#how-to-setup)
+2. start server
+3. borwser open `http://localhost:8080/graphql`
+
+---
+
+**wordsList**
+
+```json
+[
+  {
+    "id": "spaghetti2022-07-18",
+    "name": "spaghetti"
+  },
+  {
+    "id": "xxx1658330303720",
+    "name": "xxx"
+  }
+]
+```
+
+**wordDetails**
+
+```json
+[
+  {
+    "name": "xxx",
+    "pronunciation": "[xxx]",
+    "language": "en",
+    "area": ["x", "xx"],
+    "meaningsList": [
+      {
+        "type": "n.",
+        "meanings": "xxx"
+      }
+    ],
+    "expressionsList": [
+      {
+        "expression": "asc",
+        "translation": "ASC",
+        "sentencesList": [
+          {
+            "sentence": "xaxx",
+            "translation": "xAxx"
+          }
+        ]
+      }
+    ],
+    "sentencesList": [
+      {
+        "sentence": "ascasc",
+        "translation": "adsfdgsdg"
+      }
+    ],
+    "id": "xxx1658330303719",
+    "publishAt": "2022-07-20T15:18:23.719Z"
+  }
+]
+```
+
+## How to Develop
+
+###
+
+### create query and mutaion
+
+query:
+
+> 1. graphql/resolver/
+> 2. graphql/api/queries
+> 3. graphql/schema
+
+mustaion:
+
+> 1.  graphql/resolver/
+> 2.  graphql/api/mutations
+> 3.  graphql/schema
+
+### How to Setup
+
+```shell
+# 1.
+git clone https://github.com/BlaxBerry/fullstack-languages-study.git
+
+# 2.
+cd fullstack-languages-study
+cd server
+npm install
+
+# 3.
+nodemon index.ts
+
+# Server runnning at http://localhost:8080
+# Graphql IDE Server runnning at http://localhost:8080/graphql
+```

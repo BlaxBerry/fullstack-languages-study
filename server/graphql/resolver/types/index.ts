@@ -8,7 +8,7 @@ export type WordsListItem = {
 }
 
 export type WordType = 'n.' | 'vt.' | 'adj.' | 'adv.'
-export type LanguageType = 'en' | 'ja'
+export type LanguageType = string
 
 export type SentencesListItem = {
   sentence: string
@@ -39,4 +39,4 @@ export type GetWordDetailInput = {
   language: LanguageType
 }
 
-export type CreateWordInput = Omit<WordDetail, 'id'>
+export type CreateWordInput = Omit<WordDetail, 'id' | 'publishAt'>
